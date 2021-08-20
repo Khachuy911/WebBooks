@@ -3,5 +3,5 @@
 -Trang quản trị gồm: 
 + getAllUser, deleteUser,
 + getAllBook, deleteBook, UpdateBook, createBook
-+ 
+
 -Chức năng search của web dùng text search của mongodb đạt mức tối ưu chỉ 50%.
