@@ -36,18 +36,18 @@ const bookSchema = new Schema(
   }
 );
 
-// thiết lập chỉ mục văn bản cho search
-bookSchema.index(
-  {
-    name: "text",
-    description: "text",
-  },
-  {
-    weights: {
-      // độ ưu tiên, số càng cao độ ưu tiên càng lớn
-      name: 5,
-      description: 1,
-    },
-  }
-);
+//thiết lập chỉ mục văn bản cho search
+// bookSchema.index(
+//   {
+//     name: "text",
+//     description: "text",
+//   },
+//   {
+//     weights: {
+//       // độ ưu tiên, số càng cao độ ưu tiên càng lớn
+//       name: 5,
+//       description: 1,
+//     },
+//   }
+// );
 module.exports = mongoose.model("book", bookSchema);
