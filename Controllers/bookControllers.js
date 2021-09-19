@@ -14,7 +14,12 @@ module.exports = {
     });
   }),
   getAllBook: asyncHandle(async (req, res) => {
-    const book = await books.find();
+    const { page } = req.query;
+    const perPage = process.env.PERPAGE;
+    const startPage = (page - 1) * perPage;
+    const endPage = page * perPage;
+    const book = await books.find().skip(startPage).limit(endPage);
+
     // res.render("book.ejs", { book });
     res.status(200).json({
       status: "success",

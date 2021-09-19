@@ -11,7 +11,11 @@ module.exports = {
     });
   }),
   getAllUser: asyncHandle(async (req, res) => {
-    const user = await users.find();
+    const { page } = req.query;
+    const perPage = process.env.PERPAGE;
+    const startPage = (page - 1) * perPage;
+    const endPage = page * perPage;
+    const user = await users.find().skip(startPage).limit(endPage);
     if (!user) return next(new errorResponse(401, "user not exists"));
     // res.render("user.ejs", { user });
     res.status(200).json({
