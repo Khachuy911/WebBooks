@@ -24,7 +24,7 @@ module.exports = {
   getSearchBook: asyncHandle(async (req, res) => {
     const data = req.query.nameBook;
     // search mongoose
-    const book = await books.find({ $text: { $search: data } });
+    const book = await books.find({ $text: { $search: data } }).limit(10);
     res.status(200).json({
       status: "success",
       data: book,
