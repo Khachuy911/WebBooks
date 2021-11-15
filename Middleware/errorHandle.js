@@ -1,10 +1,8 @@
 const errorResponse = require("../helpers/ErrorResponse");
 
 const errorHandle = (err, req, res, next) => {
-  console.log("Da bat loi: " + err);
   let error;
   error = new errorResponse(err.statusCode, err.message);
-
   if (err.name === "ValidationError") {
     //Nhập tên dưới 3 kí tự
     const message = Object.values(err.errors).map((messa) => messa.message);
